@@ -1,18 +1,33 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <!-- <img alt="Vue logo" src="../assets/logo.png" /> -->
+    <ProductList :products="products" />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import ProductList from '@/components/ProductList'
+import ProductService from '@/services/ProductService.js'
 
 export default {
-  name: "home",
+  name: 'Home',
   components: {
-    HelloWorld
+    ProductList
+  },
+  data() {
+    return {
+      products: []
+    }
+  },
+  created() {
+    ProductService.getProducts()
+      .then(response => {
+        this.products = response.data
+      })
+      .catch(error => {
+        console.log('There was an error:', error.response)
+      })
   }
-};
+}
 </script>

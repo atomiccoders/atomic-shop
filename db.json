@@ -1,0 +1,119 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "socks",
+      "brand": "vue mastery",
+      "details": ["80% cotton", "20% polyester", "Gender-neutral"],
+      "variants": [
+        {
+          "variantId": 100,
+          "variantColor": "green",
+          "variantImage": "../assets/socks-green.jpg",
+          "variantQuantity": 11
+        },
+        {
+          "variantId": 101,
+          "variantColor": "blue",
+          "variantImage": "../assets/socks-blue.jpg",
+          "variantQuantity": 2
+        }
+      ],
+      "description": "Softness and creativity in one",
+      "price": 3.99,
+      "reviews": []
+    },
+    {
+      "id": 2,
+      "name": "t-shirt",
+      "brand": "vue",
+      "details": ["100% cotton", "All sizes"],
+      "variants": [
+        {
+          "variantId": 200,
+          "variantColor": "white",
+          "variantImage": "../assets/tshirt-white.jpg",
+          "variantQuantity": 2
+        },
+        {
+          "variantId": 201,
+          "variantColor": "gray",
+          "variantImage": "../assets/tshirt-gray.jpg",
+          "variantQuantity": 11
+        },
+        {
+          "variantId": 202,
+          "variantColor": "black",
+          "variantImage": "../assets/tshirt-black.jpg",
+          "variantQuantity": 2
+        }
+      ],
+      "description": "Comfortable and simple wearing",
+      "price": 11.99,
+      "reviews": []
+    },
+    {
+      "id": 3,
+      "name": "t-shirt",
+      "brand": "vue hero",
+      "details": ["100% cotton", "No-sweat technology", "Gender-neutral"],
+      "variants": [
+        {
+          "variantId": 300,
+          "variantColor": "blue",
+          "variantImage": "../assets/tshirt-hero-blue.jpg",
+          "variantQuantity": 2
+        },
+        {
+          "variantId": 301,
+          "variantColor": "gray",
+          "variantImage": "../assets/tshirt-hero-gray.jpg",
+          "variantQuantity": 11
+        },
+        {
+          "variantId": 302,
+          "variantColor": "white",
+          "variantImage": "../assets/tshirt-hero-white.jpg",
+          "variantQuantity": 2
+        },
+        {
+          "variantId": 303,
+          "variantColor": "yellow",
+          "variantImage": "../assets/tshirt-hero-yellow.jpg",
+          "variantQuantity": 2
+        }
+      ],
+      "description": "Say it loud - I'm a Vue beast!",
+      "price": 15.99,
+      "reviews": []
+    },
+    {
+      "id": 4,
+      "name": "hoodie",
+      "brand": "vue",
+      "details": [
+        "90% cotton",
+        "5% polyester",
+        "5% elastil",
+        "Two-way front pocket"
+      ],
+      "variants": [
+        {
+          "variantId": 400,
+          "variantColor": "black",
+          "variantImage": "../assets/hoodie-black.jpg",
+          "variantQuantity": 11
+        },
+        {
+          "variantId": 401,
+          "variantColor": "gray",
+          "variantImage": "../assets/hoodie-gray.jpg",
+          "variantQuantity": 2
+        }
+      ],
+      "description": "For all new kids on the block",
+      "price": 27.99,
+      "reviews": []
+    }
+  ]
+}
