@@ -1,6 +1,9 @@
 <template>
   <div id="app">
     <div id="nav" class="nav-bar">
+      <router-link to="/" style="padding:0">
+        <img src="assets/logo-white.png" style="width:125px;margin:0 50px" />
+      </router-link>
       <router-link to="/">Home</router-link>|
       <router-link to="/about">About</router-link>|
       <router-link to="/products/1">Product</router-link>
@@ -74,7 +77,7 @@ export default {
     font-weight: bold;
     color: #2c3e50;
     &.router-link-exact-active {
-      color: #1e95ea;
+      color: #fff;
     }
   }
 }
@@ -98,7 +101,7 @@ body {
 .product-image img {
   border: 1px solid #d8d8d8;
   width: 70%;
-  margin: 40px;
+  margin: 0 40px 20px;
   box-shadow: 0px 0.5px 1px #d8d8d8;
 }
 
@@ -132,10 +135,10 @@ body {
 button {
   margin-top: 10px;
   border: none;
-  background-color: #1e95ea;
+  background-color: #84cf6a;
   color: white;
   height: 40px;
-  width: 100px;
+  // width: 100px;
   font-size: 14px;
 }
 
@@ -166,7 +169,7 @@ button {
 
 input {
   width: 100%;
-  height: 25px;
+  // height: 25px;
   margin-bottom: 20px;
 }
 

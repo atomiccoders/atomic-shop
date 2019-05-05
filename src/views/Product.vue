@@ -1,7 +1,11 @@
 <template>
   <div class="product">
     <div class="product-image">
-      <img :src="image" :alt="`image of ${product.name}`" />
+      <img
+        :src="image"
+        :alt="`image of ${product.name}`"
+        @click="openModal()"
+      />
     </div>
 
     <div class="product-info">
@@ -32,23 +36,48 @@
         @click="addToCart"
         :disabled="!inStock"
         :class="{ disabledButton: !inStock }"
+        class="btn btn-outline-info"
       >
         Add to Cart
       </button>
     </div>
 
     <ProductTabs :reviews="product.reviews" @review-submitted="addReview" />
+
+    <Modal v-if="showModal" @close-modal="closeModal">
+      <h4 slot="header" class="modal-title" style="text-transform:capitalize;">
+        {{ title }}
+      </h4>
+      <div slot="body">
+        <img
+          :src="image"
+          :alt="`image of ${product.name}`"
+          style="width:100%"
+        />
+      </div>
+      <div slot="footer">
+        <button
+          type="button"
+          class="btn btn-outline-info"
+          @click="closeModal()"
+        >
+          Close
+        </button>
+      </div>
+    </Modal>
   </div>
 </template>
 
 <script>
 import ProductTabs from '../components/ProductTabs'
 import ProductService from '@/services/ProductService.js'
+import Modal from '@/components/Modal'
 
 export default {
   name: 'Product',
   components: {
-    ProductTabs
+    ProductTabs,
+    Modal
   },
   props: {
     premium: {
@@ -67,7 +96,8 @@ export default {
         ],
         reviews: []
       },
-      selectedVariant: 0
+      selectedVariant: 0,
+      showModal: false
     }
   },
   created() {
@@ -92,6 +122,12 @@ export default {
     },
     addReview(productReview) {
       this.product.reviews.push(productReview)
+    },
+    openModal() {
+      this.showModal = true
+    },
+    closeModal() {
+      this.showModal = false
     }
   },
   computed: {
@@ -132,5 +168,12 @@ li {
 } */
 a {
   color: #42b983;
+}
+.product-image img {
+  cursor: pointer;
+}
+.modal button.btn {
+  margin: 0;
+  margin-left: 10px;
 }
 </style>

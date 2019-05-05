@@ -10,17 +10,17 @@
     </div>
     <p>
       <label for="name">Name:</label>
-      <input id="name" v-model="name" placeholder="name" />
+      <input id="name" v-model="name" placeholder="name" class="form-control" />
     </p>
 
     <p>
       <label for="review">Review:</label>
-      <textarea id="review" v-model="review"></textarea>
+      <textarea id="review" v-model="review" class="form-control"></textarea>
     </p>
 
     <p>
       <label for="rating">Rating:</label>
-      <select id="rating" v-model.number="rating">
+      <select id="rating" v-model.number="rating" class="form-control">
         <option>5</option>
         <option>4</option>
         <option>3</option>
@@ -30,7 +30,7 @@
     </p>
 
     <p>
-      <input type="submit" value="Submit" />
+      <input type="submit" value="Submit" class="btn btn-outline-info" />
     </p>
   </form>
 </template>
