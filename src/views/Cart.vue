@@ -2,17 +2,17 @@
   <div class="cart-container">
     <h1 class="title">Order</h1>
     <ul class="items">
-      <li v-if="!cart.length">Your cart is empty</li>
+      <li v-if="!$store.getters.getCartLength">Your cart is empty</li>
       <li :key="item.id" v-for="item in checkout" class="item">
         <div class="item-preview">
-          <img :src="item.thumbnail" :alt="item.name" class="item-thumbnail" />
+          <img :src="item.thumbnail" :alt="item.name" class="item-thumbnail">
           <div>
             <h2 class="item-title">{{ item.name }}</h2>
             <p class="item-description">{{ item.brand }}</p>
           </div>
         </div>
         <div class="recipe">
-          <input type="text" class="item-quantity" v-model="item.quantity" />
+          <input type="text" class="item-quantity" v-model="item.quantity">
           <span class="item-price">{{ toPrice(item.price).toFormat() }}</span>
         </div>
       </li>
@@ -33,31 +33,33 @@
 </template>
 
 <script>
-import ProductService from '@/services/ProductService.js'
 import Dinero from 'dinero.js'
 
 export default {
   name: 'Cart',
   props: {
-    cart: {
-      type: Array,
-      required: true
-    }
+    // cart: {
+    //   type: Array,
+    //   required: true
+    // }
   },
   data() {
     return {
       data: {
         shippingPrice: 2.99
-        // cart: []
-      },
-      products: []
+      }
+    }
+  },
+  methods: {
+    toPrice(amount, factor = Math.pow(10, 2)) {
+      return Dinero({ amount: Math.round(amount * factor) })
     }
   },
   computed: {
     checkout() {
       let array = []
-      this.cart.forEach(elem => {
-        this.products.forEach(item => {
+      this.$store.getters.getCartContent.forEach(elem => {
+        this.$store.state.products.forEach(item => {
           item.variants.forEach(el => {
             if (el.variantId === elem.id)
               array.push({
@@ -86,19 +88,8 @@ export default {
       return this.getSubtotal.add(this.getShippingPrice)
     }
   },
-  methods: {
-    toPrice(amount, factor = Math.pow(10, 2)) {
-      return Dinero({ amount: Math.round(amount * factor) })
-    }
-  },
   created() {
-    ProductService.getProducts()
-      .then(response => {
-        this.products = response.data
-      })
-      .catch(error => {
-        console.log('There was an error:', error.response)
-      })
+    this.$store.dispatch('fetchProducts')
   }
 }
 </script>

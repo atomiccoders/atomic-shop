@@ -71,13 +71,11 @@
 <script>
 import ProductTabs from '../components/ProductTabs'
 import ProductService from '@/services/ProductService.js'
-import Modal from '@/components/Modal'
 
 export default {
   name: 'Product',
   components: {
-    ProductTabs,
-    Modal
+    ProductTabs
   },
   props: {
     premium: {
@@ -111,8 +109,8 @@ export default {
   },
   methods: {
     addToCart() {
-      this.$emit(
-        'add-to-cart',
+      this.$store.dispatch(
+        'updateCart',
         this.product.variants[this.selectedVariant].variantId
       )
       this.product.variants[this.selectedVariant].variantQuantity -= 1
