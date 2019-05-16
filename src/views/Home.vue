@@ -8,7 +8,7 @@
 <script>
 // @ is an alias to /src
 import ProductList from '@/components/ProductList'
-import ProductService from '@/services/ProductService.js'
+import { mapState } from 'vuex'
 
 export default {
   name: 'Home',
@@ -16,18 +16,11 @@ export default {
     ProductList
   },
   data() {
-    return {
-      products: []
-    }
+    return {}
   },
   created() {
-    ProductService.getProducts()
-      .then(response => {
-        this.products = response.data
-      })
-      .catch(error => {
-        console.log('There was an error:', error.response)
-      })
-  }
+    this.$store.dispatch('fetchProducts')
+  },
+  computed: mapState(['products'])
 }
 </script>
