@@ -4,16 +4,16 @@ import camelCase from 'lodash/camelCase'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import BaseIcon from '@/components/BaseIcon'
+import BaseIcon from '@/components/global/BaseIcon'
 
 Vue.component('BaseIcon', BaseIcon)
 
 Vue.config.productionTip = false
 
 const requireComponent = require.context(
-  './components',
+  './components/global',
   false,
-  /Base[A-Z]\w+\.(vue|js)$/
+  /[A-Z]\w+\.(vue|js)$/
 )
 
 requireComponent.keys().forEach(fileName => {

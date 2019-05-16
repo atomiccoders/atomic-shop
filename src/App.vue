@@ -1,24 +1,9 @@
 <template>
   <div id="app">
-    <div id="nav" class="nav-bar">
-      <router-link to="/" style="padding:0">
-        <img src="assets/logo-white.png" style="width:125px;margin:0 50px" />
-      </router-link>
-      <router-link to="/">Home</router-link>|
-      <router-link to="/about">About</router-link>|
-      <router-link to="/products/1">Product</router-link>
-
-      <div class="cart">
-        <router-link to="/cart">Cart ({{ cartLength }})</router-link>
-      </div>
-    </div>
+    <NavBar />
 
     <div class="container">
-      <router-view
-        :premium="user.premium"
-        @add-to-cart="updateCart"
-        :cart="cart"
-      />
+      <router-view :premium="user.premium" />
     </div>
 
     <footer class="footer"></footer>
@@ -26,38 +11,43 @@
 </template>
 
 <script>
+import NavBar from '@/views/common/NavBar'
+
 export default {
   name: 'app',
-  components: {},
+  components: {
+    NavBar
+  },
   props: [],
   data() {
     return {
       user: {
         premium: true
-      },
-      cart: [],
-      cartLength: 0
+      }
     }
   },
   methods: {
-    updateCart(id) {
-      const index = this.cart.findIndex(x => x.id === id)
-      if (index === -1) {
-        this.cart.push({
-          id: id,
-          quantity: 1
-        })
-        this.cartLength++
-      } else {
-        this.cart[index].quantity++
-        this.cartLength++
-      }
-    }
+    // updateCart(id) {
+    //   const index = this.$store.state.cart.findIndex(x => x.id === id)
+    //   if (index === -1) {
+    //     this.$store.state.cart.push({
+    //       id: id,
+    //       quantity: 1
+    //     })
+    //     this.cartLength++
+    //   } else {
+    //     this.cart[index].quantity++
+    //     this.cartLength++
+    //   }
+    // }
   }
 }
 </script>
 
 <style lang="scss">
+body {
+  margin: 0px;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -68,28 +58,6 @@ export default {
   & .container {
     margin-top: 20px;
   }
-}
-
-#nav {
-  a {
-    display: inline-block;
-    padding: 18px 30px;
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #fff;
-    }
-  }
-}
-
-body {
-  margin: 0px;
-}
-
-.nav-bar {
-  background: linear-gradient(-90deg, #84cf6a, #16c0b0);
-  height: 60px;
-  // margin-bottom: 15px;
 }
 
 .product {
@@ -186,5 +154,15 @@ textarea {
 .activeTab {
   color: #16c0b0;
   text-decoration: underline;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.8s ease-in 0.6s;
+}
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
+  transition: opacity 0.8s ease-out 0.3s;
 }
 </style>
