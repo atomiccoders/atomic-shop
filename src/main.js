@@ -7,6 +7,8 @@ import store from './store'
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import BaseIcon from '@/components/global/BaseIcon'
+import 'bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 Vue.component('BaseIcon', BaseIcon)
 
