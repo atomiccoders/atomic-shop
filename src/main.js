@@ -4,6 +4,8 @@ import camelCase from 'lodash/camelCase'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import 'bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import BaseIcon from '@/components/global/BaseIcon'
 
 Vue.component('BaseIcon', BaseIcon)
