@@ -2,9 +2,7 @@
   <div id="app">
     <NavBar />
 
-    <div class="container">
-      <router-view :premium="user.premium" />
-    </div>
+    <router-view :premium="user.premium" />
 
     <footer class="footer"></footer>
   </div>
@@ -45,18 +43,24 @@ export default {
 </script>
 
 <style lang="scss">
-body {
+html,
+body,
+*,
+*::before,
+*::after {
   margin: 0px;
+  padding: 0;
+  box-sizing: border-box;
 }
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* text-align: center; */
-  color: #2c3e50;
+  color: #fff;
   /* margin-top: 60px; */
   & .container {
-    margin-top: 20px;
+    // margin-top: 20px;
   }
 }
 
@@ -93,11 +97,11 @@ body {
 
 .cart {
   /* margin-right: 25px; */
-  float: right;
-  border: 1px solid #d8d8d8;
-  background-color: #fff;
+  // float: right;
+  // border: 1px solid #d8d8d8;
+  // background-color: #fff;
   // padding: 2px 20px;
-  margin: -2px 0;
+  // margin: -2px 0;
 }
 
 button {

@@ -5,6 +5,8 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import BaseIcon from '@/components/global/BaseIcon'
+import 'bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 Vue.component('BaseIcon', BaseIcon)
 
